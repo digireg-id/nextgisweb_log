@@ -1,0 +1,6 @@
+[nextgisweb.amd_packages]
+nextgisweb_log = nextgisweb_log:amd_packages
+
+[nextgisweb.packages]
+nextgisweb_log = nextgisweb_log:pkginfo
+

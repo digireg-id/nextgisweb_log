@@ -1,0 +1,14 @@
+setup.cfg
+nextgisweb_log/__init__.py
+nextgisweb_log/model.py
+nextgisweb_log/view.py
+nextgisweb_log/log_handler.py
+nextgisweb_log/template/message_browser.mako
+nextgisweb_log/template/message_info.mako
+nextgisweb_log.egg-info/PKG-INFO
+nextgisweb_log.egg-info/SOURCES.txt
+nextgisweb_log.egg-info/dependency_links.txt
+nextgisweb_log.egg-info/entry_points.txt
+nextgisweb_log.egg-info/not-zip-safe
+nextgisweb_log.egg-info/requires.txt
+nextgisweb_log.egg-info/top_level.txt
