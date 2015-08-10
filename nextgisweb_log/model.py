@@ -66,3 +66,19 @@ class LogEntry(Base):
     def info(mess_text, **kwargs):
         LogEntry.log(mess_text, mess_level=LogLevels.info, **kwargs)
 
+    @staticmethod
+    def debug(mess_text, **kwargs):
+        LogEntry.log(mess_text, mess_level=LogLevels.debug, **kwargs)
+
+    @staticmethod
+    def critical(mess_text, **kwargs):
+        LogEntry.log(mess_text, mess_level=LogLevels.critical, **kwargs)
+
+    @staticmethod
+    def error(mess_text, **kwargs):
+        LogEntry.log(mess_text, mess_level=LogLevels.error, **kwargs)
+
+    @staticmethod
+    def warning(mess_text, **kwargs):
+        LogEntry.log(mess_text, mess_level=LogLevels.warning, **kwargs)
+
