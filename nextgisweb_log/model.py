@@ -48,7 +48,7 @@ class LogEntry(Base):
     exc_info = db.Column(db.Unicode)
 
     @staticmethod
-    def log(mess_text, mess_level=LogLevels.default_value, mess_name=None, component=None, group=None, exc_info=None):
+    def log(mess_text, mess_level=LogLevels.default_value, mess_name=None, component=None, group=None, exc_info=None, append_dt=None):
         log_entry = LogEntry()
         log_entry.component = component
         log_entry.group = group
@@ -59,6 +59,9 @@ class LogEntry(Base):
         log_entry.message_text = mess_text
 
         log_entry.exc_info = exc_info
+
+        if append_dt:
+            log_entry.append_dt = append_dt
 
         log_entry.persist()
 
