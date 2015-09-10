@@ -17,7 +17,7 @@ def messages_browse(request):
     check_permission(request)
     return dict(
         title=u'Журнал сообщений',
-        obj_list=LogEntry.query().order_by(desc(LogEntry.id)),
+        obj_list=LogEntry.query().order_by(desc(LogEntry.id)).limit(500),
         dynmenu=request.env.pyramid.control_panel)
 
 
