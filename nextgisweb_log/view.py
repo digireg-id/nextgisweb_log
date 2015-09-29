@@ -7,6 +7,7 @@ from sqlalchemy import desc
 
 from .model import LogEntry
 
+PAGE_SIZE = 10000
 
 def check_permission(request):
     if not request.user.is_administrator:
@@ -15,9 +16,15 @@ def check_permission(request):
 
 def messages_browse(request):
     check_permission(request)
+    try:
+        page = int(request.matchdict['page'])
+    except:
+        page = 0
+
     return dict(
         title=u'Журнал сообщений',
-        obj_list=LogEntry.query().order_by(desc(LogEntry.id)).limit(500),
+        obj_list=LogEntry.query().order_by(desc(LogEntry.id)).limit(PAGE_SIZE).offset(PAGE_SIZE*page),
+        total_pages=LogEntry.query().count()/PAGE_SIZE,
         dynmenu=request.env.pyramid.control_panel)
 
 
@@ -33,7 +40,7 @@ def setup_pyramid(comp, config):
 
     config.add_route(
         'log.message.browse',
-        '/log/messages/') \
+        '/log/messages/{page:\d+}', client=('page', )) \
         .add_view(messages_browse, renderer='nextgisweb_log:/template/message_browse.mako')
 
     config.add_route(
@@ -48,7 +55,7 @@ def setup_pyramid(comp, config):
         def build(self, kwargs):
             yield dm.Link(
                 self.sub('browse'), u'Просмотреть',
-                lambda kwargs: kwargs.request.route_url('log.message.browse')
+                lambda kwargs: kwargs.request.route_url('log.message.browse', page=0)
             )
 
     LogMenu.__dynmenu__ = comp.env.pyramid.control_panel
