@@ -1,7 +1,7 @@
 <%inherit file='nextgisweb:templates/base.mako' />
 
 <div>
-    <b>Страницы: </b>
+    <b>Pages: </b>
         %for page in xrange(total_pages+1):
             %if page<=30:
                 <a href="${request.route_url('log.message.browse', page=page)}">${page}</a>
