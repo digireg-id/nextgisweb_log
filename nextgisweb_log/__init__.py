@@ -5,7 +5,6 @@ from nextgisweb.component import Component
 from .model import Base
 
 
-@Component.registry.register
 class LogComponent(Component):
     identity = 'log'
     metadata = Base.metadata
